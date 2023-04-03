@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
 
 '''
-The program prints the wait_random function n
-number of times and then prints the resulting delay time
-as an array in ascending order.
+The program prints floats to execute time.
 '''
 import asyncio
 from typing import List
@@ -12,8 +10,7 @@ task_wait_random = __import__('3-tasks').task_wait_random
 
 async def task_wait_n(n: int, max_delay: int) -> List[float]:
     '''
-    returns a sorted list of delayed seconds from a random
-    generated value
+    returns a sorted list of execution time per call.
     '''
     # Make sure that n and max_delay are positive integers
     if not isinstance(n, int) or n < 0:
