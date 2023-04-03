@@ -9,7 +9,8 @@ import asyncio
 from typing import List
 wait_random = __import__('0-basic_async_syntax').wait_random
 
-async def wait_n(n:int, max_delay:int) -> List[float]:
+
+async def wait_n(n: int, max_delay: int) -> List[float]:
     '''
     returns a sorted list of delayed seconds from a random
     generated value
@@ -19,12 +20,11 @@ async def wait_n(n:int, max_delay:int) -> List[float]:
         raise ValueError("n must be a positive integer")
     if not isinstance(max_delay, int) or max_delay < 0:
         raise ValueError("max_delay must be a positive integer")
-    
+
     list_of_delays = []
     for i in range(n):
         list_of_delays.append(wait_random(max_delay))
 
-    
     results = await asyncio.gather(*list_of_delays)
 
     for i in range(len(results)):
@@ -33,6 +33,4 @@ async def wait_n(n:int, max_delay:int) -> List[float]:
             if results[j] < results[i]:
                 results[i], results[j] = results[j], results[i]
 
-
     return results
-        
