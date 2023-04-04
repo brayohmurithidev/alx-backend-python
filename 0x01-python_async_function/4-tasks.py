@@ -27,7 +27,7 @@ async def task_wait_n(n: int, max_delay: int) -> List[float]:
     for i in range(len(results)):
         for j in range(len(results)):
             # if element at j is smaller than element at i then swap.
-            if results[j] < results[i]:
+            if results[j] > results[i]:
                 results[i], results[j] = results[j], results[i]
 
     return results
