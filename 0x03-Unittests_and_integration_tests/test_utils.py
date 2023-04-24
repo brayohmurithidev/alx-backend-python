@@ -27,8 +27,5 @@ class TestAccessNestedMap(unittest.TestCase):
     def test_access_nested_map_exception(self, nested_map, path):
         '''Raise error for key not available'''
         with self.assertRaises(KeyError) as cm:
-            result = nested_map
-            for key in path:
-                result = result[key]
-        expected_msg = f"Key not found: {path[-1]}"
-        self.assertEqual(str(cm.exception), expected_msg)
+            access_nested_map(nested_map, path)
+        self.assertEqual(str(cm.exception), f"Key not found: {path[-1]}")
